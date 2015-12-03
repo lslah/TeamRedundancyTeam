@@ -1,6 +1,7 @@
 FLAGS = -g -O2 -static -std=gnu++11 -D_GLIBCXX_DEBUG
+BUILD_DIR = build
 
-all: build/solve
+all: $(BUILD_DIR)/solve
 
 build/%: %.cpp | $(BUILD_DIR)
 	g++ -o $@ $(FLAGS) $^
