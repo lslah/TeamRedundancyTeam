@@ -8,38 +8,26 @@ const int MAXN = 100000;
 vector<int> edges[MAXN];
 
 int used[MAXN];
-int path[MAXN];
 
-vector<int> cyclepath;
-
-bool dfs_cycle(int v, int h = 0) {
+// Returns whether the current component of connectivity contains a cycle or
+// not.  true means it contains a cycle.
+bool dfs(int v) {
     used[v] = 1;
-    path[h] = v;
 
     for (int i = 0; i < edges[v].size(); i++) {
         int next = edges[v][i];
 
-        if (used[next] == 1 && cyclepath.empty()) {
-            int curh = h;
-            while (path[curh] != next) {
-                curh--;
-            }
-
-            while (curh <= h) {
-                cyclepath.push_back(path[curh]);
-                curh++;
-            }
-
-            return false;
+        if (used[next] == 1) {
+            return true;
         } else if (used[next] == 0) {
-            if (!dfs_cycle(next, h+1)) {
-                return false;
+            if (dfs(next)) {
+                return true;
             }
         }
     }
 
     used[v] = 2;
-    return true;
+    return false;
 }
 
 int main(void) {
@@ -59,15 +47,13 @@ int main(void) {
     }
 
     fill(used, used+N, 0);
-    fill(path, path+N, 0);
 
     for (int i = 0; i < N; i++) {
         if (used[i]) continue;
-        if (!dfs_cycle(i)) {
+        if (dfs(i)) {
             printf("YES\n");
-        } else {
-            printf("NO\n");
+            return 0;
         }
     }
-
+    printf("NO\n");
 }
