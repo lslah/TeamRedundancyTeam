@@ -1,0 +1,74 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef vector<vector<bool> > Image;
+
+void print_map(int *image[], int R, int C) {
+    for (int i = 0; i < R; i++) {
+        for (int j = 0; j < C; j++) {
+            cout << image[j][i];
+        }
+        cout << endl;
+    }
+}
+
+Image 
+
+int main(void) {
+    int R, C;
+    cin >> R >> C;
+    pair<int, int> bed;
+    pair<int, int> fridge;
+
+    Image map;
+    int image[C][R];
+
+    int x1, x2, x3, x4;
+
+    cin.ignore(100,'(');
+    cin >> x1 >> x2;
+    cin.ignore(100,'(');
+    cin >> x3 >> x4;
+    cin.ignore(100,')');
+    bed.first = x1-1;
+    bed.second = x2-1;
+    fridge.first = x3-1;
+    fridge.second = x4-1;
+
+    string line;
+    getline(cin, line);
+    for (int i = 0; i < R; i++) {
+        getline(cin, line);
+        for (int j = 0; j < C; j++) {
+            if (line[j] == '.') {
+                image[j][i] = true;
+            } else {
+                image[j][i] = false;
+            }
+        }
+    }
+    print_map(image, C, R); 
+
+    int p;
+    cin >> p;
+
+    vector<pair<int, int> > guard[p];
+    for (int i = 0; i < p; i++) {
+        int stepN;
+        cin >> stepN;
+        int x, y;
+        for (int j = 0; j < stepN; j++) {
+            cin.ignore(100,'(');
+            cin >> x >> y;
+            guard[i].push_back(make_pair(x-1,y-1));
+        }
+        cin.ignore(100,')');
+    }
+
+    int maps[120][C][R];
+    for (int j = 0; j < 120; j++){
+        
+    }
+
+}
