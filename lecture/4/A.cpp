@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-#define verbose 1
+#define verbose 0
 #define inf 1e9
 
 using namespace std;
