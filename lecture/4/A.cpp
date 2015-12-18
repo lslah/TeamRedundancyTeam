@@ -10,7 +10,7 @@ vector<int> edges[MAXN];
 vector<int> value;
 vector<int> nbr_pred;
 
-int dfs(int v, int p = -1){
+int dfs(int v, int  p = -1){
    if (value[v]!= 0) return value[v];
    int maxdp = 0;
    for (int i = 0; i < edges[v].size(); i++){
