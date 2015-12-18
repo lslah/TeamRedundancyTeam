@@ -12,7 +12,7 @@ vector<int> nbr_pred;
 
 int dfs(int v, int  p = -1){
    if (value[v]!= 0) return value[v];
-   int maxdp = 0;
+   int maxdp = 0   ;
    for (int i = 0; i < edges[v].size(); i++){
       int next = edges[v][i];
       if (next != p){
