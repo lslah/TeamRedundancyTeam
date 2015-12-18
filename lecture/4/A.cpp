@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const int MAXN = 10001;
+const int MAXN = 100001;
 vector<int> edges[MAXN];
 vector<int> value;
 vector<int> nbr_pred;
