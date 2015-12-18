@@ -21,12 +21,13 @@ int dfs(int v, int p = -1){
 }
 
 int main(void){
-   int N, M, root;
-   cin >> N >> M >> root;
+   int N, root;
+   cin >> N >> root;
    root--;
-   for (int i = 0; i < M; i++){
+   for (int i = 0; i < N; i++) { cin >> a[i]; }
+   for (int i = 0; i < N-1; i++){
       int da, b;
-      cin >> da >> b >> a[i];
+      cin >> da >> b;
       edges[da-1].push_back(b-1);
       edges[b-1].push_back(da-1);
    }
