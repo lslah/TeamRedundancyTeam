@@ -31,14 +31,6 @@ int dp(int vertex, bool des_val){
    if (vertex > J) return inf;
 
    bool operation = oper[vertex];
-<<<<<<< HEAD
-<<<<<<< HEAD
-   // if it is alright
-   if (value[vertex] == des_val) return 0;
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 
    // (want 1 with OR) or (want 0 with AND)
    // => Need to change exactly one child to 0
