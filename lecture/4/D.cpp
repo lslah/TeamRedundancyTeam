@@ -37,7 +37,7 @@ int dp(int vertex, bool des_val){
    bool right = value[2*vertex + 1];
    bool operation = oper[vertex];
    // if it is alright
-   if (evalOperation(operation, left, right) == des_val) return 0;
+   if (value[vertex] == des_val) return 0;
 
    if (!changeable[vertex]){
       // try to change child values
