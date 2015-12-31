@@ -25,31 +25,35 @@ bool evaluate(int vertex){
 
 
 int dp(int vertex, bool des_val){
+   // Already correct?
+   if (value[vertex] == des_val) return 0;
+   // Not correct and leaf? Too bad.
+   if (vertex > J) return inf;
 
-   if (vertex > J){
-      if (value[vertex] == des_val){
-         return 0;
-      }
-      else return inf;
-   }
-
-   bool left = value[2*vertex];
-   bool right = value[2*vertex + 1];
    bool operation = oper[vertex];
+<<<<<<< HEAD
+<<<<<<< HEAD
    // if it is alright
    if (value[vertex] == des_val) return 0;
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
 
-   if (!changeable[vertex]){
-      // try to change child values
+   // (want 1 with OR) or (want 0 with AND)
+   // => Need to change exactly one child to 0
+   if (des_val != operation)
+      return min(dp(2*vertex, des_val), dp(2*vertex+1, des_val));
 
-      if ((des_val && operation) || (!des_val && !operation))
-          return dp(2*vertex, des_val) + dp(2*vertex+1, des_val);
-   }
-   // (des_val != operation)
-   if ((des_val && !operation) || (!des_val && operation))
-       return min(dp(2*vertex, des_val), dp(2*vertex+1, des_val));
+   // Want 0 with OR  => Both childs need to be 0
+   // Want 1 with AND => Both childs need to be 1
 
-   return min(1+dp(2*vertex, des_val), 1+dp(2*vertex+1, des_val));
+   // Better to switch operation if possible
+   if (changeable[vertex])
+      return 1+min(dp(2*vertex, des_val), dp(2*vertex+1, des_val));
+
+   // No way, we have to change both childs
+   return dp(2*vertex, des_val) + dp(2*vertex+1, des_val);
 }
 
 int main(void){
