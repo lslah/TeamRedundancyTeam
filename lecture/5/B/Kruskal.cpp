@@ -50,7 +50,7 @@ int main(){
     int r = ret.size();
     cout << r << endl;
     if (r > 0){
-        for (int i = 0; i < r; i++){
+        for (int i = 0; i < r-1; i++){
             cout << ret[i] + 1 << " ";
         }
         cout << ret[r - 1] + 1<< endl;
